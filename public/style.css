@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* Navigace */
+.navbar {
+    position: sticky;
+    top: 0;
+    background: #111;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: orange;
+}
+
+/* Hero */
+.hero {
+    height: 90vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('https://picsum.photos/1600/900?festival');
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+}
+
+.hero p {
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+/* Sekce */
+.section {
+    padding: 30px 10%;
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+.main-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+/* Countdown */
+.countdown {
+    margin-top: 30px;
+    background: rgba(255,255,255,0.2);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#timer {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Program */
+.program-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+}
+
+.program-item {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* Interpreti */
+.artist-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.artist-card {
+    background: white;
+    width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.artist-card:hover {
+    transform: translateY(-10px);
+}
+
+.artist-card img {
+    width: 100%;
+    height: 350px;
+}
+
+.artist-card h3,
+.artist-card p {
+    padding: 15px;
+}
+
+/* Vstupenky */
+.tickets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.ticket {
+    background: white;
+    width: 250px;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.ticket p {
+    font-size: 2rem;
+    color: orange;
+    margin: 20px 0;
+}
+
+.ticket button {
+    padding: 10px 20px;
+    border: none;
+    background: orange;
+    color: white;
+    cursor: pointer;
+}
+
+/* Galerie */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 15px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 250px;          
+    object-fit: cover;    
+    border-radius: 10px;
+    display: block;
+}
+/* Sponzoři */
+.sponsors {
+    background: #111;
+    color: white;
+    padding: 60px 10%;
+    text-align: center;
+}
+
+.sponsor-logos {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    gap: 20px;
+}
+
+.sponsor-logos div {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Mobil */
+@media(max-width:768px){
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+}

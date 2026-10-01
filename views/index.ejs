@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Festival - Úvod</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">TrutnoFest 2026</div>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Úvod</a></li>
+        <li><a href="program.html">Program</a></li>
+        <li><a href="interpreti.html">Interpreti</a></li>
+        <li><a href="vstupenky.html">Vstupenky</a></li>
+        <li><a href="misto.html">Místo konání</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+    </ul>
+</nav>
+
+<header class="hero">
+    <h1>Festival Hudby a Umění</h1>
+
+    <p>Největší letní festival roku.</p>
+
+    <div class="countdown">
+        <h2>Festival začíná za:</h2>
+        <div id="timer"></div>
+    </div>
+</header>
+
+<section class="sponsors">
+    <h2>Sponzoři</h2>
+
+    <div class="sponsor-logos">
+        <div>SPŠ Trutnov</div>
+        <div>Hellstar</div>
+        <div>BrarSound</div>
+        <div>Skittles</div>
+    </div>
+</section>
+
+<footer>
+    <p>© TrutnoFest 2026, Za Tratí 558/541 01 Trutnov</p>
+</footer>
+
+<script>
+const festivalDate = new Date("July 19, 2026 18:00:00").getTime();
+
+const timer = setInterval(function() {
+
+    const now = new Date().getTime();
+    const distance = festivalDate - now;
+
+    const days = Math.floor(distance / (1000*60*60*24));
+    const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+
+    document.getElementById("timer").innerHTML =
+    days + " dní " + hours + " hodin " + minutes + " minut";
+
+},1000);
+</script>
+
+</body>
+</html>
