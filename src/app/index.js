@@ -8,6 +8,9 @@ const app = express();
 // volba view enginu
 app.set('view engine', 'ejs');
 
+// prijem dat z formularu
+app.use(express.urlencoded({ extended: false }));
+
 // nastaveni cesty ke slozce views (lezi přímo v app/)
 app.set('views', path.join(__dirname, 'views'));
 

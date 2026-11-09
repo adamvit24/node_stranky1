@@ -1,28 +1,13 @@
-// zavislosti
-const model = require('../models/postsModel.js');
-
-// priprava routeru
+const controller = require('../controllers/defaultController.js');
 const router = require('express').Router();
 
-router.get('/hello', (req, res) => {
-	res.send('Hello World from Express!');
-});
+// presmerovani na specializovany router pro /posts
+router.use('/posts', require('./postsRouter.js'));
 
-router.get(['/','/index'], (req, res) => {
-	res.render('index');
-});
+// indexova stranka
+router.get(['/', '/index'], controller.index);
 
-router.get('/posts', (req, res) => {
-	res.render('posts', {
-		titulek: 'Příspěvky',
-		prispevky: model.nacistPrispevky(),
-	});
-});
+// chybova stranka
+router.use(controller.error);
 
-// vsechny ostatni URL jsou chyba
-router.use((req, res) => {
-	res.render('error');
-});
-
-// exportovani routeru pro pouziti v aplikaci
 module.exports = router;

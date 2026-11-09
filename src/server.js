@@ -9,3 +9,4 @@ require('http').createServer(require('./app'))
 .listen(port, () => {
     console.log(`Server běží na http://localhost:${port}`);
 });
+

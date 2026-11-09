@@ -1,14 +1,55 @@
-// nacteni kodu balicku databaze
 const jsondb = require('simple-json-db');
 const path = require('path');
 
-// presna cesta k databazi
 const db = new jsondb(path.join(__dirname, '../../data/posts.json'));
 
-// nabizena funkcnost modelu
+// nacteni vsech prispevku
 exports.nacistPrispevky = () => {
-    const data = db.JSON();
-    // Pokud data obsahují pole příspěvků pod klíčem prispevky, nebo přímo pole
-    if (Array.isArray(data)) return data;
-    return data.prispevky || [];
+	const data = db.JSON();
+	if (Array.isArray(data)) return data;
+	return data.prispevky || [];
+};
+
+// nacteni jednoho prispevku
+exports.nacistPrispevek = (id) => {
+	const prispevky = exports.nacistPrispevky();
+
+	for (let i = 0; i < prispevky.length; i++) {
+		if (prispevky[i].id == id) {
+			return prispevky[i];
+		}
+	}
+
+	return false;
+};
+
+// pridani prispevku do DB
+exports.pridatPrispevek = (nadpis, obsah) => {
+	const prispevky = exports.nacistPrispevky();
+	const noveId = prispevky.length > 0 ? Math.max(...prispevky.map(p => p.id)) + 1 : 1;
+	
+	const novyPrispevek = {
+		id: noveId,
+		nadpis: nadpis,
+		obsah: obsah
+	};
+
+	prispevky.push(novyPrispevek);
+	db.set('prispevky', prispevky);
+	return novyPrispevek;
+};
+
+// smazani prispevku z DB
+exports.smazatPrispevek = (id) => {
+	let prispevky = exports.nacistPrispevky();
+	const povodniPocet = prispevky.length;
+
+	prispevky = prispevky.filter(p => p.id != id);
+
+	if (prispevky.length !== povodniPocet) {
+		db.set('prispevky', prispevky);
+		return true;
+	}
+
+	return false;
 };
