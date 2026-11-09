@@ -1,6 +1,6 @@
 {
   "scripts": {
-	  "dev": "nodemon server.js"
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "dotenv": "^18.0.5",

@@ -1,15 +1,18 @@
-// nacteni balicku s knihovnou express
+// nacteni balicku s knihovnou express a path
 const express = require('express');
-//vytvoreni backendove aplikace
+const path = require('path');
+
+// vytvoreni backendove aplikace
 const app = express();
 
-//volba
+// volba view enginu
 app.set('view engine', 'ejs');
 
-app.set('views', './app/views');
+// nastaveni cesty ke slozce views (lezi přímo v app/)
+app.set('views', path.join(__dirname, 'views'));
 
-//staticke soubory
-app.use(express.static('public'));
+// staticke soubory (slozka public lezi o uroven vys v src/)
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(require('./routes/defaultRouter'));
 
