@@ -6,19 +6,19 @@
             "obsah": "Toto je první příspěvek."
         },
         {
-            "id": 2,
-            "nadpis": "Druhý příspěvek",
-            "obsah": "Toto je druhý příspěvek."
-        },
-        {
             "id": 3,
             "nadpis": "Třetí příspěvek",
             "obsah": "Toto je třetí příspěvek."
         },
         {
             "id": 4,
-            "nadpis": "abcd",
-            "obsah": "abcd"
+            "nadpis": "Nový příspěvek",
+            "obsah": "tohle je nový příspěvek."
+        },
+        {
+            "id": 6,
+            "nadpis": "test1",
+            "obsah": "blablabla"
         }
     ]
 }

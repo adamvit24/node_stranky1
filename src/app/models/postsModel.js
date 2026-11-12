@@ -3,11 +3,12 @@ const path = require('path');
 
 const db = new jsondb(path.join(__dirname, '../../data/posts.json'));
 
-// nacteni vsech prispevku
+// nacteni vsech prispevku (serazeno od nejvyssiho ID po nejnizsi)
 exports.nacistPrispevky = () => {
 	const data = db.JSON();
-	if (Array.isArray(data)) return data;
-	return data.prispevky || [];
+	const prispevky = Array.isArray(data) ? data : (data.prispevky || []);
+	
+	return [...prispevky].sort((a, b) => b.id - a.id);
 };
 
 // nacteni jednoho prispevku
@@ -25,7 +26,9 @@ exports.nacistPrispevek = (id) => {
 
 // pridani prispevku do DB
 exports.pridatPrispevek = (nadpis, obsah) => {
-	const prispevky = exports.nacistPrispevky();
+	const data = db.JSON();
+	const prispevky = Array.isArray(data) ? data : (data.prispevky || []);
+	
 	const noveId = prispevky.length > 0 ? Math.max(...prispevky.map(p => p.id)) + 1 : 1;
 	
 	const novyPrispevek = {
@@ -41,7 +44,8 @@ exports.pridatPrispevek = (nadpis, obsah) => {
 
 // smazani prispevku z DB
 exports.smazatPrispevek = (id) => {
-	let prispevky = exports.nacistPrispevky();
+	const data = db.JSON();
+	let prispevky = Array.isArray(data) ? data : (data.prispevky || []);
 	const povodniPocet = prispevky.length;
 
 	prispevky = prispevky.filter(p => p.id != id);
