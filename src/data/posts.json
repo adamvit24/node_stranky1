@@ -16,9 +16,24 @@
             "obsah": "tohle je nový příspěvek."
         },
         {
+            "id": 5,
+            "nadpis": "1",
+            "obsah": "1"
+        },
+        {
             "id": 6,
-            "nadpis": "test1",
-            "obsah": "blablabla"
+            "nadpis": "2",
+            "obsah": "2"
+        },
+        {
+            "id": 7,
+            "nadpis": "3",
+            "obsah": "3"
+        },
+        {
+            "id": 8,
+            "nadpis": "4",
+            "obsah": "4"
         }
     ]
 }

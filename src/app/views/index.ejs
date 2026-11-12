@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <title><%= titulek %></title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-
-<nav class="navbar">
-    <div class="logo">TrutnoFest 2026</div>
-
-    <ul class="nav-links">
-        <li><a href="/">Úvod</a></li>
-        <li><a href="/posts">Příspěvky</a></li>
-        <li><a href="/program">Program</a></li>
-    </ul>
-</nav>
+<%- include('_partials/heads') %>
 
 <header class="hero">
     <h1>Festival Hudby a Umění</h1>
@@ -39,10 +22,6 @@
     </div>
 </section>
 
-<footer>
-    <p>© TrutnoFest 2026, Za Tratí 558/541 01 Trutnov</p>
-</footer>
-
 <script>
 const festivalDate = new Date("July 19, 2026 18:00:00").getTime();
 
@@ -61,5 +40,4 @@ const timer = setInterval(function() {
 },1000);
 </script>
 
-</body>
-</html>
+<%- include('_partials/tails') %>
