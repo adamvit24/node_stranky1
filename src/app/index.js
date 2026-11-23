@@ -1,6 +1,8 @@
 // nacteni balicku s knihovnou express a path
 const express = require('express');
 const path = require('path');
+// nacteni balicku pro praci se session
+const session = require('express-session');
 
 // vytvoreni backendove aplikace
 const app = express();
@@ -10,6 +12,13 @@ app.set('view engine', 'ejs');
 
 // prijem dat z formularu
 app.use(express.urlencoded({ extended: false }));
+
+// nastaveni session
+app.use(session({
+	secret: require('dotenv').config().parsed.SECRET,
+	resave: false,
+	saveUninitialized: true,
+}));
 
 // nastaveni cesty ke slozce views (lezi přímo v app/)
 app.set('views', path.join(__dirname, 'views'));

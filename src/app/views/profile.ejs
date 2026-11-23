@@ -1,0 +1,22 @@
+<%- include('_partials/heads') %>
+
+<main>
+    <h1>Profil uživatele</h1>
+    <p>Jste přihlášení jako <b><%= prihlasenyUzivatel %></b>!</p>
+
+    <form action="/users/signout" method="post">
+        <input type="submit" value="Odhlásit" />
+    </form>
+
+    <hr />
+
+    <h2>Zrušení účtu</h2>
+    <p>Pro trvalé smazání účtu zadejte své současné heslo:</p>
+    <form action="/users/delete" method="post">
+        <input type="password" name="heslo" placeholder="Vaše heslo..." required />
+        <br />
+        <input type="submit" value="Zrušit účet" onclick="return confirm('Opravdu chcete trvale smazat svůj účet?')" />
+    </form>
+</main>
+
+<%- include('_partials/tails') %>

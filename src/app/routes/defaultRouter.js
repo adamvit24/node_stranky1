@@ -4,6 +4,9 @@ const router = require('express').Router();
 // presmerovani na specializovany router pro /posts
 router.use('/posts', require('./postsRouter.js'));
 
+// presmerovani na specializovany router pro /users
+router.use('/users', require('./usersRouter.js'));
+
 // indexova stranka
 router.get(['/', '/index'], controller.index);
 

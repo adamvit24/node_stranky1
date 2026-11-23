@@ -1,0 +1,14 @@
+<%- include('_partials/heads') %>
+
+<main>
+    <h1>Přihlášení / Registrace</h1>
+    <form action="/users/sign" method="post">
+        <input type="text" name="jmeno" placeholder="Jméno..." required />
+        <br />
+        <input type="password" name="heslo" placeholder="Heslo..." required />
+        <br />
+        <input type="submit" value="Vstoupit" />
+    </form>
+</main>
+
+<%- include('_partials/tails') %>
