@@ -1,0 +1,56 @@
+<%- include('_partials/heads') %>
+
+<main>
+    <h1>Vstupenky na TrutnoFest 2026</h1>
+    <p>Přihlášený uživatel: <b><%= prihlasenyUzivatel %></b></p>
+
+    <section>
+        <h2>Ceník a výběr vstupenek</h2>
+        <ul>
+            <li><b>1 den:</b> 499 Kč</li>
+            <li><b>3 dny:</b> 1 299 Kč</li>
+            <li><b>VIP (3 dny + backstage + vlastní bar):</b> 2 499 Kč</li>
+        </ul>
+
+        <form action="/tickets/add" method="POST">
+            <div>
+                <label for="typ">Vyberte typ vstupenky:</label><br />
+                <select id="typ" name="typ" required>
+                    <option value="1den">1 den – 499 Kč</option>
+                    <option value="3dny">3 dny – 1 299 Kč</option>
+                    <option value="vip">VIP – 2 499 Kč</option>
+                </select>
+            </div>
+            <br />
+            <div>
+                <label for="pocet">Počet kusů:</label><br />
+                <input type="number" id="pocet" name="pocet" value="1" min="1" max="10" required />
+            </div>
+            <br />
+            <button type="submit">Přidat do košíku</button>
+        </form>
+    </section>
+
+    <hr />
+
+    <section>
+        <h2>Košík</h2>
+        <% if (kosik.length === 0) { %>
+            <p><i>Váš košík je zatím prázdný.</i></p>
+        <% } else { %>
+            <% for (let i = 0; i < kosik.length; i++) { %>
+                <div>
+                    <h3><%= kosik[i].typ %> (<%= kosik[i].pocet %> ks)</h3>
+                    <p>Cena: <b><%= kosik[i].celkovaCena %> Kč</b></p>
+                    <form action="/tickets/remove/<%= kosik[i].id %>" method="POST">
+                        <button type="submit">Odebrat z košíku</button>
+                    </form>
+                </div>
+                <hr />
+            <% } %>
+            <p>Celková cena v košíku: <b><%= celkem %> Kč</b></p>
+        <% } %>
+    </section>
+</main>
+
+<%- include('_partials/tails') %>

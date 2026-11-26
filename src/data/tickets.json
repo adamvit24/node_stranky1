@@ -1,0 +1,36 @@
+{
+    "vstupenky": [
+        {
+            "id": 1,
+            "uzivatel": "vita24",
+            "typ": "Třídenní vstupenka (3 dny)",
+            "pocet": 2,
+            "celkovaCena": 2598,
+            "datum": "26. 11. 2026"
+        },
+        {
+            "id": 2,
+            "uzivatel": "vita24",
+            "typ": "VIP vstupenka",
+            "pocet": 10,
+            "celkovaCena": 24990,
+            "datum": "26. 11. 2026"
+        }
+    ],
+    "kosik": [
+        {
+            "id": 1,
+            "uzivatel": "vita24",
+            "typ": "VIP vstupenka",
+            "pocet": 2,
+            "celkovaCena": 4998
+        },
+        {
+            "id": 2,
+            "uzivatel": "test",
+            "typ": "Třídenní vstupenka (3 dny)",
+            "pocet": 5,
+            "celkovaCena": 6495
+        }
+    ]
+}

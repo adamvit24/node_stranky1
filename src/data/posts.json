@@ -17,6 +17,12 @@
             "nadpis": "Třetí příspěvek",
             "obsah": "Toto je třetí příspěvek.",
             "autor": "Admin"
+        },
+        {
+            "id": 4,
+            "nadpis": "Testovací příspěvek",
+            "obsah": "Tohle je testovací příspěvek",
+            "autor": "vita24"
         }
     ]
 }

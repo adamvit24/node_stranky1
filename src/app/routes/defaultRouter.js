@@ -1,11 +1,10 @@
 const controller = require('../controllers/defaultController.js');
 const router = require('express').Router();
 
-// presmerovani na specializovany router pro /posts
+// presmerovani na specializovane routery
 router.use('/posts', require('./postsRouter.js'));
-
-// presmerovani na specializovany router pro /users
 router.use('/users', require('./usersRouter.js'));
+router.use('/tickets', require('./ticketsRouter.js'));
 
 // indexova stranka
 router.get(['/', '/index'], controller.index);
