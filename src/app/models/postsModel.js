@@ -24,8 +24,8 @@ exports.nacistPrispevek = (id) => {
 	return false;
 };
 
-// pridani prispevku do DB
-exports.pridatPrispevek = (nadpis, obsah) => {
+// pridani prispevku do DB vcetne autora
+exports.pridatPrispevek = (nadpis, obsah, autor) => {
 	const data = db.JSON();
 	const prispevky = Array.isArray(data) ? data : (data.prispevky || []);
 	
@@ -34,7 +34,8 @@ exports.pridatPrispevek = (nadpis, obsah) => {
 	const novyPrispevek = {
 		id: noveId,
 		nadpis: nadpis,
-		obsah: obsah
+		obsah: obsah,
+		autor: autor
 	};
 
 	prispevky.push(novyPrispevek);
@@ -42,7 +43,7 @@ exports.pridatPrispevek = (nadpis, obsah) => {
 	return novyPrispevek;
 };
 
-// smazani prispevku z DB
+// smazani jednoho prispevku z DB
 exports.smazatPrispevek = (id) => {
 	const data = db.JSON();
 	let prispevky = Array.isArray(data) ? data : (data.prispevky || []);
@@ -56,4 +57,13 @@ exports.smazatPrispevek = (id) => {
 	}
 
 	return false;
+};
+
+// smazani vsech prispevku daneho autora (pri zruseni uctu)
+exports.smazatPrispevkyAutora = (autor) => {
+	const data = db.JSON();
+	let prispevky = Array.isArray(data) ? data : (data.prispevky || []);
+	
+	prispevky = prispevky.filter(p => p.autor !== autor);
+	db.set('prispevky', prispevky);
 };

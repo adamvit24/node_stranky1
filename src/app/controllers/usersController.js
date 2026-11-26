@@ -1,4 +1,5 @@
 const model = require('../models/usersModel');
+const postsModel = require('../models/postsModel');
 
 exports.oneForm = (req, res) => {
 	if (req.session.prihlasenyUzivatel) {
@@ -53,10 +54,10 @@ exports.deleteAccount = (req, res) => {
 	}
 
 	if (model.smazatUzivatele(jmeno, heslo)) {
+		postsModel.smazatPrispevkyAutora(jmeno);
 		req.session.destroy();
 		res.redirect('/users');
 	} else {
-		// kdyz zada spatne heslo, zustane na profilu
 		res.redirect('/users/profile');
 	}
 };

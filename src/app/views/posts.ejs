@@ -1,27 +1,31 @@
 <%- include('_partials/heads') %>
 
+  <main>
     <h1><%= titulek %></h1>
 
-    <!-- Formulář pro přidání příspěvku -->
     <section>
         <h2>Přidat nový příspěvek</h2>
-        <form action="/posts/add" method="POST">
-            <div>
-                <label for="nadpis">Nadpis:</label><br>
-                <input type="text" id="nadpis" name="nadpis" required>
-            </div>
-            <div>
-                <label for="obsah">Obsah:</label><br>
-                <textarea id="obsah" name="obsah" required></textarea>
-            </div>
-            <br>
-            <button type="submit">Přidat příspěvek</button>
-        </form>
+        <% if (prihlasenyUzivatel) { %>
+            <p>Přihlášen jako: <b><%= prihlasenyUzivatel %></b></p>
+            <form action="/posts/add" method="POST">
+                <div>
+                    <label for="nadpis">Nadpis:</label><br>
+                    <input type="text" id="nadpis" name="nadpis" required>
+                </div>
+                <div>
+                    <label for="obsah">Obsah:</label><br>
+                    <textarea id="obsah" name="obsah" required></textarea>
+                </div>
+                <br>
+                <button type="submit">Přidat příspěvek</button>
+            </form>
+        <% } else { %>
+            <p>Pro přidání nového příspěvku se musíte <a href="/users">přihlásit</a>.</p>
+        <% } %>
     </section>
 
     <hr>
 
-    <!-- Výpis příspěvků a mazání -->
     <section>
         <h2>Seznam příspěvků</h2>
         <% if(typeof prispevky == 'undefined' || prispevky.length == 0) { %>
@@ -30,16 +34,20 @@
             <% for(let i = 0; i < prispevky.length; i++) { %>
                 <div id="<%= prispevky[i].id %>">
                     <h3><%= prispevky[i].nadpis %></h3>
+                    <p><small>Autor: <b><%= prispevky[i].autor || 'Anonym' %></b></small></p>
                     <p><%= prispevky[i].obsah %></p>
                     <a href="/posts/<%= prispevky[i].id %>">Detail</a>
                     
-                    <form action="/posts/delete/<%= prispevky[i].id %>" method="POST" style="display:inline;">
-                        <button type="submit" onclick="return confirm('Opravdu smazat?')">Smazat</button>
-                    </form>
+                    <% if (prihlasenyUzivatel && prispevky[i].autor === prihlasenyUzivatel) { %>
+                        <form action="/posts/delete/<%= prispevky[i].id %>" method="POST" style="display:inline;">
+                            <button type="submit" onclick="return confirm('Opravdu smazat?')">Smazat</button>
+                        </form>
+                    <% } %>
                 </div>
                 <hr>
             <% } %>
         <% } %>
     </section>
+</main>
     
 <%- include('_partials/tails') %>

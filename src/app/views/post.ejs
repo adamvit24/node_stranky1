@@ -4,6 +4,7 @@
     <% if (prispevek) { %>
         <article>
             <h1><%= prispevek.nadpis %></h1>
+            <p><small>Autor: <b><%= prispevek.autor || 'Anonym' %></b></small></p>
             <p><%= prispevek.obsah %></p>
         </article>
     <% } else { %>
